@@ -5,14 +5,16 @@ import { stdin as input, stdout as output } from 'node:process';
 
 async function main() {
   const rl = readline.createInterface({ input, output });
+  let tag
   // control flow
   for (; ;) {
-    const tag = await rl.question('Please input your tag (v1.0.0): ');
+    tag = await rl.question('Please input your tag (v1.0.0): ');
     // control flow
     if (tag.startsWith('v')) {
       break
     }
   }
+  tag = tag.trim().substring(1);
   const confirm = await rl.question(`Do you wanna tag v${tag}? (Y/n)`);
   // control flow
   if (confirm === 'Y' || confirm === 'y') {
